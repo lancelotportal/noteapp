@@ -8,6 +8,7 @@ const App = () => {
 
   const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
+  const [useDarkMode, setColorMode] = useState(false);
 
   const onAddNote = () => {
 
@@ -47,13 +48,15 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div className={useDarkMode === false ? "App" : "App-darkMode"}>
       <Sidebar 
         notes={notes} 
         onAddNote={onAddNote} 
         onDeleteNote={onDeleteNote}
         activeNote={activeNote}
         setActiveNote={setActiveNote}
+        useDarkMode={useDarkMode}
+        setColorMode={setColorMode}
       />
       <Main activeNote={getActiveNote()} onNoteUpdate={onNoteUpdate} />
     </div>

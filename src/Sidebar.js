@@ -1,15 +1,20 @@
-const Sidebar = ({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) => {
+import { CgDarkMode } from 'react-icons/cg';
+
+const Sidebar = ({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote, useDarkMode, setColorMode }) => {
+
+    const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified );
 
     return (
         <div className="app-sidebar">
             <div className="app-sidebar-header">
                 <h1>Notes</h1>
+                <button className="darkModeButton" onClick={() => setColorMode(!useDarkMode)}><CgDarkMode /></button>
                 <button onClick={onAddNote}>Add</button>
             </div>
 
             <div className="app-sidebar-notes">
 
-                {notes.map((note) => (
+                {sortedNotes.map((note) => (
 
                 <div className={`app-sidebar-note ${note.id === activeNote && "active"}`} onClick={() => setActiveNote(note.id)}>
                     <div className="sidebar-note-title">
