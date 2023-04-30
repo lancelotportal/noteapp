@@ -22,6 +22,20 @@ const App = () => {
 
   }
 
+  const onNoteUpdate = (updatedNote) => {
+    const updatedNotesArray = notes.map((note) => {
+
+      if (note.id === activeNote) {
+        return updatedNote;
+      }
+
+      return note
+
+    });
+
+    setNotes(updatedNotesArray);
+  }
+
   const onDeleteNote = (idToDelete) => {
 
     setNotes(notes.filter((note) => note.id !== idToDelete));
@@ -41,7 +55,7 @@ const App = () => {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <Main activeNote={getActiveNote()} />
+      <Main activeNote={getActiveNote()} onNoteUpdate={onNoteUpdate} />
     </div>
   )
 

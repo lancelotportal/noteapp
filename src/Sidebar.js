@@ -1,4 +1,5 @@
 const Sidebar = ({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) => {
+
     return (
         <div className="app-sidebar">
             <div className="app-sidebar-header">
